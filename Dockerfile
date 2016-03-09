@@ -25,10 +25,10 @@ RUN mkdir /src \
     && echo "{}" > /src/config.json
 
 # Install node deps from package.json
-RUN . $HOME/.nvm/nvm.sh && cd /src && npm install bcrypt && npm install --production
+RUN . $HOME/.nvm/nvm.sh && cd /src && npm install --production
 
 # Expose port
 EXPOSE 3000
 
 # Run app using nodemon
-CMD . $HOME/.nvm/nvm.sh && cd /src/ && nodemon app.js
+CMD . $HOME/.nvm/nvm.sh && cd /src/ && git fetch && git reset --hard origin/master && nodemon app.js
